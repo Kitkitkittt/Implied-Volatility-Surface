@@ -21,7 +21,7 @@ If a `swarm-ready` skill is installed, load it. Otherwise execute the documented
 
 ## Repository starting point
 
-Read: [README.md](README.md).
+Read the [README](README.md) and [Streamlit source](volatility_surface.py). The [development container](.devcontainer/devcontainer.json) specifies Python 3.11, installs dependencies, and starts Streamlit on attach. Use a plain shell for this documentation and offline check; do not attach the container. Page execution reads Yahoo Finance expirations and option chains through `yfinance`.
 
 Continue an existing approved issue or a clearly scoped user objective after inspecting the source map below. If none is selected, return the smallest useful improvement and its verifier as the handoff; do not begin a portfolio-wide rewrite.
 
@@ -41,7 +41,20 @@ The base above is an inspection snapshot, not a permanent working branch. Refres
 
 ## Verification starting point
 
-No executable acceptance command was established by this bounded source inspection. Read `README.md` and record the narrowest existing check before implementation. Do not invent a `test` command or infer that the repository has no tests from this gap. For a documentation-only task, check links, factual source anchors and whitespace; do not build unrelated application code.
+From the repository root, parse the source with Python 3.11 without importing the app, installing dependencies, or starting Streamlit:
+
+```sh
+python3.11 - <<'PY'
+import ast
+from pathlib import Path
+
+path = Path('volatility_surface.py')
+ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+print(f'Parsed {path}')
+PY
+```
+
+Expect `Parsed volatility_surface.py` and exit 0. For the documentation slice, also check the local links and compare the bootstrap description with `requirements.txt` and the development container. Syntax acceptance does not verify the pricing model, rendered dashboard, market data, or hosted demo.
 
 ## Required handoff result
 
