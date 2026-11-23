@@ -2,6 +2,17 @@
 
 A Python application that visualizes the implied volatility surface for SPY options. Using real-time SPY option data from Yahoo Finance, the app calculates implied volatility based on the Black-Scholes model and plots a 3D surface to show how implied volatility varies with time to expiration and strike price. The user-friendly Streamlit interface allows for easy adjustments to model parameters.
 
+## Local setup and offline verification
+
+For source or documentation changes, use Python 3.11 in a plain shell and
+follow the [parse-only handoff](SWARM_READY.md#verification-starting-point).
+That check needs no application dependencies or market data.
+
+For an authorized application run, use a Python 3.11 virtual environment and
+install the [application dependencies](requirements.txt) with
+`python -m pip install -r requirements.txt`. The Streamlit app requests Yahoo
+Finance data when its page runs, so launching it is not an offline check.
+
 ## Live Demo on Streamlit
 [Access the application on Streamlit](https://volatilitysurface.streamlit.app/)
 
